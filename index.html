@@ -235,9 +235,19 @@ html, body {
 }
 @keyframes spin { to{transform:rotate(360deg)} }
 .hidden { display:none !important; }
+
+#music-note {
+  position: fixed; top: 16px; right: 16px;
+  font-size: 18px; opacity: 0.55;
+  z-index: 50; pointer-events: none;
+  animation: blink 2s ease-in-out infinite;
+}
 </style>
 </head>
 <body>
+
+  <audio id="bg-music" src="Young and Beautiful.mp3" loop preload="auto"></audio>
+<div id="music-note">♪</div>
 
 <div id="env-wrap" onclick="openCard()">
   <div class="env-bg"></div>
@@ -332,6 +342,7 @@ html, body {
   }
 
   function openCard() {
+    document.getElementById('bg-music').play().catch(function(){});
     document.getElementById('env-wrap').classList.add('gone');
     setTimeout(function() {
       document.getElementById('env-wrap').style.display = 'none';
