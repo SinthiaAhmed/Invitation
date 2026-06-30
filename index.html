@@ -456,6 +456,11 @@ html, body {
       })(i);
     }
   }
+
+  document.body.addEventListener('touchstart', function() {
+  var audio = document.getElementById('bg-music');
+  if (audio.paused) audio.play().catch(function(){});
+}, { once: true });
 </script>
 </body>
 </html>
